@@ -26,7 +26,8 @@ def get_json_feed():
     '''Loads the JSON feed for vimcasts.org.'''
     json_url = 'http://vimcasts.org/episodes.json?referrer=xbmc'
     conn = urlopen(json_url)
-    _json = json.load(conn)
+    s = conn.read().replace("\\'","'")
+    _json = json.loads(s)
     conn.close()
     return _json
 
